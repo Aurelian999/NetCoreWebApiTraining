@@ -18,6 +18,7 @@ namespace StudentsAPI
         {
             services.AddSingleton<IStudentsService, StudentsService>();
             services.AddSingleton<Services.v2.IStudentsService, Services.v2.StudentsService>();
+            services.AddSingleton<Services.v2.IEventsService, Services.v2.EventsService>();
             services.AddControllers().AddXmlSerializerFormatters();
 
             services.AddApiVersioning(options =>

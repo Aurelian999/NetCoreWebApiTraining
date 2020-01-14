@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
+using StudentsAPI.Models.v2;
+using StudentsAPI.Services.v2;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StudentsAPI.Controllers.v2
 {
@@ -10,11 +9,17 @@ namespace StudentsAPI.Controllers.v2
     [Route("[controller]")]
     public class EventsController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get()
+        private readonly IEventsService eventsService;
+
+        public EventsController(IEventsService eventsService)
         {
-            // TODO implement get
-            throw new NotImplementedException();
+            this.eventsService = eventsService;
+        }
+
+        [HttpGet]
+        public IEnumerable<Event> Get()
+        {
+            return eventsService.Get();
         }
 
     }

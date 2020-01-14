@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using StudentsAPI.Filters;
 using StudentsAPI.Models.v2;
 using StudentsAPI.Services.v2;
 using System;
@@ -11,6 +12,7 @@ namespace StudentsAPI.Controllers.v2
     [ApiVersion("2.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [EventsLoggingFilter]
     public class StudentsController : ControllerBase
     {
         private readonly IStudentsService studentsService;
