@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StudentsAPI.Middlewares;
 using StudentsAPI.Services.v1;
 
 namespace StudentsAPI
@@ -42,6 +43,8 @@ namespace StudentsAPI
                     await context.Response.WriteAsync("Unexpected server error. Please contact admin@localhost.com.");
                 }));
             }
+
+            app.UseMiddleware<ApiKeyValidationMiddleware>();
 
             app.UseRouting();
 
